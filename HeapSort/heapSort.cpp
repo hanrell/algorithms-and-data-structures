@@ -59,7 +59,7 @@ int main(int argc, char **argv){
     filename.erase(filename.length() - 2,filename.length());
 
     ofstream ordered ("output/" + filename + "out");
-    if(!instancia){
+    if(!ordered){
         cout << "O arquivo nao pode ser criado" << endl;
          return -1; 
     }

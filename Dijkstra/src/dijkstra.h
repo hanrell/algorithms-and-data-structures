@@ -14,6 +14,6 @@ using namespace std;
 
 vector<int> gerarDistInicial(int size, vector<int> &p, int source);
 void printMatriz(Data data);
-void dijkstra(Data data, int source, vector<int> &distance, vector<int> &p);
+void dijkstra(Data data, vector<int> &distance, vector<int> &p);
 
 #endif

@@ -12,26 +12,37 @@
 /*###################################### MAIN #########################################*/
 int main(int argc, char **argv) {
 
-  if (argc != 2) {
+  if (argc != 3) {
     cout << "Numero errado de argumentos! Utilize da seguinte forma:\n ./heap "
-            "<caminho/da/instancia>\n";
+            "<caminho/da/instancia> vInicial\n";
 
     exit(0);
   }
 
   string caminho = argv[1];
+  int vInicial = atoi(argv[2]);
   Data data(caminho);                                                                   //Grafo.
-  vector<int> predecessores(data.getGraphSize());                                       //Vetor de nós predecessores.
-  vector<int> distancia = gerarDistInicial(data.getGraphSize(), predecessores, 0);
+  vector<int> predecessores(data.getGraphSize());                                      //Vetor de nós predecessores.
+  vector<int> distancia = gerarDistInicial(data.getGraphSize(), predecessores, vInicial);
   
 
-  dijkstra(data, 0, distancia, predecessores);
-  printMatriz(data);
+  dijkstra(data, distancia, predecessores);
+  //printMatriz(data);
+  
+  ofstream arquivo("resultado.txt");
 
-  cout << endl;
-  for (int i = 0; i < distancia.size(); i++) {
-    cout << distancia[i] << " ";
+  if(!arquivo){
+    cout << "Erro ao criar arquivo";
+    exit(0);
   }
+
+  for (int i = 0; i < distancia.size(); i++) {
+    arquivo << vInicial <<"->" << i << ": "  << distancia[i] << " ";
+    arquivo << endl;
+  }
+
+  arquivo.close();
+  
 }
 /*#####################################################################################*/
 
@@ -64,7 +75,7 @@ void relaxar(pair<int, int> noAtual, int vizinho, Data data,
 }
 
 /********************** Algorítmo de Dijkstra ***************************/
-void dijkstra(Data data, int source, vector<int> &dist, vector<int> &p) {
+void dijkstra(Data data, vector<int> &dist, vector<int> &p) {
   vector<bool> visitados(data.getGraphSize());                                        //Vetor que irá guardar os nós já visitados.
   vector<pair<int, int>> heap;
 
@@ -80,12 +91,6 @@ void dijkstra(Data data, int source, vector<int> &dist, vector<int> &p) {
 
     for (int i = 0; i < heap.size(); i++) {
         relaxar(u, i, data, heap, dist, p);
-        for (int i = 0; i < heap.size(); i++) {
-          cout << heap[i].second << " ";
-        }
-        cout << endl;
-
-
     }
   }
 }

@@ -29,7 +29,7 @@ int main(int argc, char **argv) {
   dijkstra(data, distancia, predecessores);
   //printMatriz(data);
   
-  ofstream arquivo("resultado.txt");
+  ofstream arquivo("resultado/resultado.txt");
 
   if(!arquivo){
     cout << "Erro ao criar arquivo";

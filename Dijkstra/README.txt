@@ -7,4 +7,4 @@ Para rodar:
 Exemplo:
 ./dijkstra instancias/dij10.txt
 
-O vetor ordenado irá ser guardado na pasta "result" após terminar de rodar.
+O vetor ordenado irá ser guardado na pasta "resultado" após terminar de rodar.

@@ -1,0 +1,5 @@
+*.in linguist-documentation
+
+*.txt linguist-documentation
+
+$ cat .gitattributes

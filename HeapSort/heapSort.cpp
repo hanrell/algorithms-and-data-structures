@@ -105,7 +105,7 @@ void maxHeapify (vector<long int> &heap, int i, int &heapSize){
 /*Função que cria o Heap Máximo*/
 void buildMaxHeap(vector<long int> &heap, int &heapSize){
     
-    for (int i = ((heap.size() - 2)/2); i >= 0; i--)       // Vai do último nó não-folha para a raiz (0).
+    for (int i = ((heap.size() - 1)/2); i >= 0; i--)       // Vai do último nó não-folha para a raiz (0).
         maxHeapify(heap, i, heapSize);
 }
 
